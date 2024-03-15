@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import lk.ijse.controller.BookFromController;
 import lk.ijse.controller.BookUpdateFromController;
+import lk.ijse.controller.BranchUpdateFromController;
 import lk.ijse.service.BookService;
 import lk.ijse.service.BranchService;
 import lk.ijse.service.ServiceFactory;
@@ -129,9 +130,8 @@ public class BranchTm {
          *created  button set in customer tm object to load all cel table view
          * */
         button.setOnAction(actionEvent -> {
-            BookUpdateFromController.bookId=this.id;
-            NavigationUtility.popupNavigation("BookUpdateFrom.fxml");
-
+            BranchUpdateFromController.id=this.id;
+            NavigationUtility.popupNavigation("BranchUpdateFrom.fxml");
 
         });
         return Update == null ? button : Update;
