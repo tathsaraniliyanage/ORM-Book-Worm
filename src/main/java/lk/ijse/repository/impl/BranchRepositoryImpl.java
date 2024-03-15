@@ -35,8 +35,7 @@ public class BranchRepositoryImpl implements BranchRepository {
 
     @Override
     public void delete(Long id) {
-        Branch branch = new Branch();
-        branch.setId(id);
+        Branch branch = isExits(id);
         session.delete(branch);
     }
 

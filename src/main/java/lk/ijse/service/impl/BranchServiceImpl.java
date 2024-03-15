@@ -3,11 +3,13 @@ package lk.ijse.service.impl;
 import lk.ijse.cofig.FactoryConfiguration;
 import lk.ijse.dto.BookDTO;
 import lk.ijse.dto.BranchDTO;
+import lk.ijse.entity.Book;
 import lk.ijse.entity.Branch;
 import lk.ijse.repository.BranchRepository;
 import lk.ijse.repository.RepoFactory;
 import lk.ijse.service.BranchService;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 
@@ -25,7 +27,17 @@ public class BranchServiceImpl implements BranchService {
 
     @Override
     public boolean save(BranchDTO dto) {
-        return false;
+        Transaction transaction = session.beginTransaction();
+        try {
+            branchRepository.setSession(session);
+            Long save = branchRepository.save(modelMapper.map(dto, Branch.class));
+            transaction.commit();
+            return save != null;
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override

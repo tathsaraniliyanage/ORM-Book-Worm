@@ -68,7 +68,7 @@
                   </GridPane>
                </graphic>
             </JFXButton>
-            <JFXButton layoutX="11.0" layoutY="378.0" prefHeight="60.0" prefWidth="67.0" styleClass="nav-btn">
+            <JFXButton layoutX="11.0" layoutY="378.0" onAction="#branchOnAction" prefHeight="60.0" prefWidth="67.0" styleClass="nav-btn">
                <graphic>
                   <GridPane prefHeight="50.0" prefWidth="52.0">
                      <columnConstraints>

@@ -40,4 +40,8 @@ public class AdminDashboardFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         NavigationUtility.onTheTopNavigation(rootPane,"HomeFrom.fxml");
     }
+
+    public void branchOnAction(ActionEvent actionEvent) {
+        NavigationUtility.onTheTopNavigation(rootPane,"BranchFrom.fxml");
+    }
 }
