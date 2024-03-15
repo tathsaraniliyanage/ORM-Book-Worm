@@ -1,9 +1,7 @@
 package lk.ijse.service.impl;
 
 import lk.ijse.cofig.FactoryConfiguration;
-import lk.ijse.dto.BookDTO;
 import lk.ijse.dto.BranchDTO;
-import lk.ijse.entity.Book;
 import lk.ijse.entity.Branch;
 import lk.ijse.repository.BranchRepository;
 import lk.ijse.repository.RepoFactory;
@@ -16,11 +14,10 @@ import org.modelmapper.TypeToken;
 import java.util.List;
 
 
-
 public class BranchServiceImpl implements BranchService {
     private final Session session = FactoryConfiguration.getInstance().getSession();
     private final ModelMapper modelMapper = new ModelMapper();
-    private final BranchRepository branchRepository=
+    private final BranchRepository branchRepository =
             (BranchRepository) RepoFactory
                     .getRepoFactory()
                     .getRepo(RepoFactory.RepositoryTypes.BRANCH);
@@ -42,7 +39,17 @@ public class BranchServiceImpl implements BranchService {
 
     @Override
     public boolean update(BranchDTO dto) {
-        return false;
+        Transaction transaction = session.beginTransaction();
+        try {
+            branchRepository.setSession(session);
+            branchRepository.update(modelMapper.map(dto, Branch.class));
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
@@ -54,7 +61,7 @@ public class BranchServiceImpl implements BranchService {
     public List<BranchDTO> findAll() {
         try {
             branchRepository.setSession(session);
-            return modelMapper.map( branchRepository.findAll(),new TypeToken<List<BranchDTO>>() {
+            return modelMapper.map(branchRepository.findAll(), new TypeToken<List<BranchDTO>>() {
             }.getType());
 
         } catch (Exception e) {
@@ -73,8 +80,8 @@ public class BranchServiceImpl implements BranchService {
         try {
             branchRepository.setSession(session);
             Branch branch = branchRepository.isExits(id);
-            return modelMapper.map(branch,BranchDTO.class);
-        }catch (Exception e){
+            return modelMapper.map(branch, BranchDTO.class);
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
