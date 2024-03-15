@@ -1,6 +1,7 @@
 package lk.ijse.repository.impl;
 
 import lk.ijse.entity.User;
+import lk.ijse.entity.enumuretion.TypeUser;
 import lk.ijse.repository.UserRepository;
 import org.hibernate.Session;
 
@@ -49,5 +50,13 @@ public class UserRepositoryImpl implements UserRepository {
         String hql = "SELECT u FROM User u WHERE u.id= :id ";
         return session.createQuery(hql, User.class)
                 .setParameter("id", id).uniqueResult();
+    }
+
+    @Override
+    public TypeUser auth(String password, String username) {
+        return session.createQuery("SELECT u.typeUser FROM User u WHERE u.username=:un AND u.password=:p",TypeUser.class)
+                .setParameter("un",username)
+                .setParameter("p",password)
+                .uniqueResult();
     }
 }

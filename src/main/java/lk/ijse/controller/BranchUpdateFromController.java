@@ -36,8 +36,8 @@ public class BranchUpdateFromController implements Initializable {
 
         boolean save = branchService.update(branchDTO);
         if (save) {
-            BranchFromController.getController().loadAll();
             NavigationUtility.close(actionEvent);
+            BranchFromController.getController().loadAll();
             new Alert(Alert.AlertType.CONFIRMATION, "Branch Update Successful ").show();
         } else {
             new Alert(Alert.AlertType.WARNING, "Something else try agens ").show();

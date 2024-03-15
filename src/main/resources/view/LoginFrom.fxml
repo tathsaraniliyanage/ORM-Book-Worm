@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="386.0" prefWidth="556.0" stylesheets="@../assest/css/css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LoginFormController">
    <children>
-      <ImageView fitHeight="386.0" fitWidth="706.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+      <ImageView fitHeight="386.0" fitWidth="706.0" onMouseEntered="#mouseEnteredImg" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
             <Image url="@../assest/img/58389.jpg" />
          </image>
@@ -23,7 +23,7 @@
       <Text fill="WHITE" layoutX="37.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 70; -fx-font-weight: 800;" text="BOOK" />
       <Text fill="WHITE" layoutX="37.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 60; -fx-font-weight: 800;" text="WORM" />
       <JFXTextField fx:id="txtUsername" focusColor="#405aa800" layoutX="316.0" layoutY="160.0" prefHeight="26.0" prefWidth="219.0" promptText="User" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
-      <JFXPasswordField fx:id="txtPassword" focusColor="#405aa800" layoutX="316.0" layoutY="229.0" prefHeight="26.0" prefWidth="219.0" promptText="Password" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+      <JFXPasswordField fx:id="txtPassword" focusColor="#405aa800" layoutX="316.0" layoutY="229.0" onMouseEntered="#mouseEntered" prefHeight="26.0" prefWidth="219.0" promptText="Password" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
       <Text fill="#404040" layoutX="434.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="LOGIN" />
       <ImageView fitHeight="96.0" fitWidth="126.0" layoutX="316.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -56,5 +56,6 @@
          </graphic>
       </JFXButton>
       <Line endX="21.0" layoutX="139.0" layoutY="344.0" startX="-100.0" stroke="WHITE" strokeWidth="5.0" />
+      <JFXTextField fx:id="txtPasswordText" focusColor="#405aa800" layoutX="316.0" layoutY="229.0" prefHeight="26.0" prefWidth="219.0" styleClass="text-field-normal" unFocusColor="#4d4d4d00" visible="false" />
    </children>
 </AnchorPane>

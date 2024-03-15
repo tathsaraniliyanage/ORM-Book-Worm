@@ -37,7 +37,7 @@ public class BranchFromController implements Initializable {
     public TableColumn colUpdate;
     public TableColumn colDelete;
 
-    ObservableList observableList= FXCollections.observableArrayList();
+    ObservableList<BranchTm> observableList= FXCollections.observableArrayList();
 
     private static BranchFromController controller;
 
@@ -73,6 +73,7 @@ public class BranchFromController implements Initializable {
             }.getType());
             tblBook.getItems().addAll(branchTms);
         }
+        tblBook.refresh();
     }
 
     public void addOnAction(ActionEvent actionEvent) {

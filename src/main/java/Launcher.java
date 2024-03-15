@@ -12,7 +12,7 @@ public class Launcher extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-           Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/AdminDashBord.fxml"));
+           Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/LoginFrom.fxml"));
             Scene scene = new Scene(rootNode);
 //            stage.getIcons().addAll(new Image("/view/loginForm.fxml"));
             stage.setTitle("Book Worm");

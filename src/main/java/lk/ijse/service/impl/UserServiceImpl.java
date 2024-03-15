@@ -4,6 +4,7 @@ import lk.ijse.cofig.FactoryConfiguration;
 import lk.ijse.dto.BookDTO;
 import lk.ijse.dto.UserDTO;
 import lk.ijse.entity.User;
+import lk.ijse.entity.enumuretion.TypeUser;
 import lk.ijse.repository.RepoFactory;
 import lk.ijse.repository.UserRepository;
 import lk.ijse.service.UserService;
@@ -77,6 +78,17 @@ public class UserServiceImpl implements UserService {
         try {
             userRepository.setSession(session);
             return modelMapper.map(userRepository.isExits(id), UserDTO.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public TypeUser auth(String password, String username) {
+        try {
+            userRepository.setSession(session);
+            return userRepository.auth(password,username);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
