@@ -23,7 +23,9 @@ public class BorrowingDetailRepositoryImpl implements BorrowingDetailRepository 
 
     @Override
     public void update(BorrowingDetail entity) {
-        session.merge(entity);
+        session.createQuery("UPDATE BorrowingDetail b SET b.status=:s WHERE b.id=:n")
+                .setParameter("s",entity.getStatus())
+                .setParameter("n",entity.getId()).executeUpdate();
     }
 
     @Override
@@ -53,5 +55,14 @@ public class BorrowingDetailRepositoryImpl implements BorrowingDetailRepository 
         String hql = "SELECT b FROM BorrowingDetail b WHERE b.id= :id ";
         return session.createQuery(hql, BorrowingDetail.class)
                 .setParameter("id", id).uniqueResult();
+    }
+
+    @Override
+    public BorrowingDetail getDetails(Long book_id, Long borrowing_id) {
+        String hql = "SELECT b FROM BorrowingDetail b WHERE b.book.id=:book_id AND b.borrowing.id=:borrowing_id";
+        return session.createQuery(hql, BorrowingDetail.class)
+                .setParameter("book_id", book_id)
+                .setParameter("borrowing_id",borrowing_id)
+                .uniqueResult();
     }
 }

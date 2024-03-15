@@ -75,6 +75,7 @@ public class DashboardFormController implements Initializable {
     }
 
     public void loadBook() {
+        tblBook.getItems().clear();
         List<BookDTO> all = service.findAll();
       List<BookTm> bookTms=  modelMapper.map(all,new TypeToken<List<BookTm>>() {}.getType());
       tblBook.getItems().setAll(bookTms);

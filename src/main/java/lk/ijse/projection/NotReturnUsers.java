@@ -13,6 +13,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @ToString
 public class NotReturnUsers {
+    private Long id;
+    private Long borrowing_id;
     private String username;
     private String name;
     private LocalDate borrowing_date;

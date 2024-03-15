@@ -10,6 +10,8 @@ import lk.ijse.service.ServiceFactory;
 import lk.ijse.service.UserService;
 import lk.ijse.util.NavigationUtility;
 
+import java.io.IOException;
+
 
 public class LoginFormController {
     private final UserService userService =
@@ -38,16 +40,13 @@ public class LoginFormController {
             txtUsername.clear();
             txtPassword.clear();
         }
-
-//        NavigationUtility.switchNavigation("DashBord.fxml", actionEvent);
     }
 
 
 
     public void mouseEntered(MouseEvent mouseEvent) {
-
-            txtPasswordText.setText(txtPassword.getText());
-            txtPasswordText.setVisible(true);
+        txtPasswordText.setText(txtPassword.getText());
+        txtPasswordText.setVisible(true);
     }
 
 
@@ -55,5 +54,13 @@ public class LoginFormController {
         txtPassword.setText(txtPasswordText.getText());
         txtPasswordText.setVisible(false);
 
+    }
+
+    public void regOnClick(MouseEvent mouseEvent) {
+        try {
+            NavigationUtility.switchNavigation("RgistaionFrom.fxml",mouseEvent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

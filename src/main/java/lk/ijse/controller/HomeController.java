@@ -11,6 +11,9 @@ import javafx.scene.text.Text;
 import lk.ijse.projection.NotReturnUsers;
 import lk.ijse.service.BorrowingService;
 import lk.ijse.service.ServiceFactory;
+import lk.ijse.tm.NotReturnTm;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 
 import java.net.URL;
 import java.util.List;
@@ -27,8 +30,20 @@ public class HomeController implements Initializable {
     public TableColumn colContact;
     public Text txtAvailableBooks;
     public Text txtUnavailableBooks;
+    public TableColumn colAction;
 
-    ObservableList observableList= FXCollections.observableArrayList();
+    private static HomeController controller;
+
+    public HomeController() {
+        controller=this;
+    }
+
+    public static HomeController getController() {
+        return controller;
+    }
+
+    ObservableList<NotReturnTm> observableList= FXCollections.observableArrayList();
+    ModelMapper modelMapper=new ModelMapper();
 
     BorrowingService borrowingService=
             (BorrowingService) ServiceFactory
@@ -46,9 +61,15 @@ public class HomeController implements Initializable {
         colBorrowing.setCellValueFactory(new PropertyValueFactory<>("borrowing_date"));
         colDueDate.setCellValueFactory(new PropertyValueFactory<>("received_date"));
         colContact.setCellValueFactory(new PropertyValueFactory<>("Tel"));
+        colAction.setCellValueFactory(new PropertyValueFactory<>("updateStatus"));
         tblReceived.setItems(observableList);
 
+        loadAll();
+    }
+
+    public void loadAll() {
         List<NotReturnUsers> notReturnUsers = borrowingService.getNotReturnUsers();
-        tblReceived.getItems().setAll(notReturnUsers);
+        List<NotReturnTm>returnTms=modelMapper.map(notReturnUsers,new TypeToken<List<NotReturnTm>>() {}.getType());
+        tblReceived.getItems().setAll(returnTms);
     }
 }

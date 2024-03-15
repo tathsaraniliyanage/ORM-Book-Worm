@@ -16,6 +16,7 @@ import lombok.ToString;
 @ToString
 
 public class BorrowingDetailDTO {
+    private Long id;
     private BookDTO bookDTO;
     private BorrowingDTO borrowingDTO;
     private BorrowingStatus status;

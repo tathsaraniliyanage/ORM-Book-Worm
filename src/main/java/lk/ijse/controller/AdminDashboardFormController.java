@@ -18,6 +18,15 @@ public class AdminDashboardFormController implements Initializable {
 
     public Text txtID;
     public AnchorPane rootPane;
+    private  static AdminDashboardFormController controller;
+
+    public AdminDashboardFormController() {
+        controller=this;
+    }
+
+    public static AdminDashboardFormController getController() {
+        return controller;
+    }
 
     public void bookViewOnAction(ActionEvent actionEvent) {
         NavigationUtility.onTheTopNavigation(rootPane,"BookFrom.fxml");

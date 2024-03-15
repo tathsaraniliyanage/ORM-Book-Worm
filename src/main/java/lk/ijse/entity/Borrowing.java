@@ -35,8 +35,8 @@ public class Borrowing {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany(mappedBy = "borrowing",targetEntity = BorrowingDetail.class,fetch = FetchType.LAZY)
-    private List<BorrowingDetail> borrowingDetails = new ArrayList<>();
+//    @OneToMany(mappedBy = "borrowing",targetEntity = BorrowingDetail.class,fetch = FetchType.LAZY)
+//    private List<BorrowingDetail> borrowingDetails = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.ALL,targetEntity = User.class)
     private User user;

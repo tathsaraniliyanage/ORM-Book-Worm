@@ -40,7 +40,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private TypeUser typeUser;
 
-    @OneToMany(targetEntity = Borrowing.class ,fetch = FetchType.LAZY,mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Borrowing>borrowings=new ArrayList<>();
+//    @OneToMany(targetEntity = Borrowing.class ,fetch = FetchType.LAZY,mappedBy = "user",cascade = CascadeType.ALL)
+//    private List<Borrowing>borrowings=new ArrayList<>();
 
 }
