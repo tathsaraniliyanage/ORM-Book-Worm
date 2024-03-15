@@ -99,8 +99,8 @@
       </Pane>
       <Pane prefHeight="70.0" prefWidth="1140.0" style="-fx-background-color: #C6D4DD;">
          <children>
-            <Text fill="#7488bf" layoutX="793.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="Praboda" textAlignment="RIGHT" wrappingWidth="166.08447265625" />
-            <Text fill="#7a8bc2" layoutX="816.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 12; -fx-font-weight: 400;" text="Praboda@gmail.com" textAlignment="RIGHT" wrappingWidth="153.548828125" />
+            <Text fx:id="txtUsername" fill="#7488bf" layoutX="793.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="Praboda" textAlignment="RIGHT" wrappingWidth="166.08447265625" />
+            <Text fx:id="txtEmail" fill="#7a8bc2" layoutX="816.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 12; -fx-font-weight: 400;" text="Praboda@gmail.com" textAlignment="RIGHT" wrappingWidth="153.548828125" />
             <JFXButton layoutX="1051.0" layoutY="18.0" minWidth="47.0" onAction="#logOutAction" prefHeight="38.0" prefWidth="47.0" styleClass="nav-btn" text="LOGGIN">
                <graphic>
                   <GridPane prefHeight="30.0" prefWidth="32.0">

@@ -85,10 +85,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public TypeUser auth(String password, String username) {
+    public UserDTO auth(String password, String username) {
         try {
             userRepository.setSession(session);
-            return userRepository.auth(password,username);
+            return modelMapper.map(userRepository.auth(password,username),UserDTO.class);
         } catch (Exception e) {
             e.printStackTrace();
             return null;

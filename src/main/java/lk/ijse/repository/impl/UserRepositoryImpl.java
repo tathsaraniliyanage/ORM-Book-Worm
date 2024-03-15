@@ -53,8 +53,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public TypeUser auth(String password, String username) {
-        return session.createQuery("SELECT u.typeUser FROM User u WHERE u.username=:un AND u.password=:p",TypeUser.class)
+    public User auth(String password, String username) {
+        return session.createQuery("SELECT u FROM User u WHERE u.username=:un AND u.password=:p",User.class)
                 .setParameter("un",username)
                 .setParameter("p",password)
                 .uniqueResult();

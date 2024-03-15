@@ -7,5 +7,5 @@ import lk.ijse.entity.enumuretion.TypeUser;
 public interface UserService extends CrudService<UserDTO> {
     UserDTO getUser(Long id);
 
-    TypeUser auth(String password, String username);
+    UserDTO auth(String password, String username);
 }

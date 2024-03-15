@@ -5,5 +5,5 @@ import lk.ijse.entity.enumuretion.TypeUser;
 
 
 public interface UserRepository extends CrudRepository<User>, Custom<User> {
-    TypeUser auth(String password, String username);
+    User auth(String password, String username);
 }

@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.dto.UserDTO;
 import lk.ijse.entity.enumuretion.TypeUser;
 import lk.ijse.service.ServiceFactory;
 import lk.ijse.service.UserService;
@@ -23,15 +24,23 @@ public class LoginFormController {
     public JFXTextField txtPasswordText;
 
     public void loginOnAction(ActionEvent actionEvent) {
-        TypeUser userType = userService.auth(txtPassword.getText(), txtUsername.getText());
-        if (userType!=null) {
-            switch (userType) {
-                case ADMIN:
+        UserDTO auth = userService.auth(txtPassword.getText(), txtUsername.getText());
+        if (auth!=null) {
+            switch (auth.getUser()) {
+                case ADMIN: {
                     NavigationUtility.switchNavigation("AdminDashBord.fxml", actionEvent);
+                    AdminDashboardFormController.getController().txtID.setText(String.valueOf(auth.getId()));
+                    AdminDashboardFormController.getController().txtEmail.setText(auth.getEmail());
+                    AdminDashboardFormController.getController().txtUsername.setText(auth.getUserName());
                     break;
-                case USER:
+                }
+                case USER: {
                     NavigationUtility.switchNavigation("DashBord.fxml", actionEvent);
+                    DashboardFormController.getController().txtID.setText(String.valueOf(auth.getId()));
+                    DashboardFormController.getController().txtEmail.setText(auth.getEmail());
+                    DashboardFormController.getController().txtUsername.setText(auth.getUserName());
                     break;
+                }
                 default:
                     new Alert(Alert.AlertType.WARNING, "Check Your Username And Password").show();
             }

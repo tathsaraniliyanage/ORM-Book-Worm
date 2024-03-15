@@ -36,6 +36,8 @@ public class DashboardFormController implements Initializable {
     public TableColumn colDate;
     public TableColumn colAction;
     public Text txtID;
+    public Text txtUsername;
+    public Text txtEmail;
 
     ObservableList observableList= FXCollections.observableArrayList();
 

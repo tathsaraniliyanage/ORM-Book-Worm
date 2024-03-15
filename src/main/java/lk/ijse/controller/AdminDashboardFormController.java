@@ -16,9 +16,12 @@ import java.util.ResourceBundle;
 
 public class AdminDashboardFormController implements Initializable {
 
-    public Text txtID;
-    public AnchorPane rootPane;
     private  static AdminDashboardFormController controller;
+    public AnchorPane rootPane;
+
+    public Text txtID;
+    public Text txtUsername;
+    public Text txtEmail;
 
     public AdminDashboardFormController() {
         controller=this;
