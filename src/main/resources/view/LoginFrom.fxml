@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="386.0" prefWidth="556.0" stylesheets="@../assest/css/css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LoginFormController">
+   <children>
+      <ImageView fitHeight="386.0" fitWidth="706.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@../assest/img/58389.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="37.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 70; -fx-font-weight: 800;" text="BOOK" />
+      <Text fill="WHITE" layoutX="37.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 60; -fx-font-weight: 800;" text="WORM" />
+      <JFXTextField fx:id="txtUsername" focusColor="#405aa800" layoutX="316.0" layoutY="160.0" prefHeight="26.0" prefWidth="219.0" promptText="User" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+      <JFXPasswordField fx:id="txtPassword" focusColor="#405aa800" layoutX="316.0" layoutY="229.0" prefHeight="26.0" prefWidth="219.0" promptText="Password" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+      <Text fill="#404040" layoutX="434.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="LOGIN" />
+      <ImageView fitHeight="96.0" fitWidth="126.0" layoutX="316.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assest/img/pngegg1.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="316.0" layoutY="287.0" onAction="#loginOnAction" prefHeight="38.0" prefWidth="219.0" styleClass="nav-btn" text="LOGGIN">
+         <graphic>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="68.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="132.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="LOGIN">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../assest/img/icons8-arrow-24.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <Line endX="21.0" layoutX="139.0" layoutY="344.0" startX="-100.0" stroke="WHITE" strokeWidth="5.0" />
+   </children>
+</AnchorPane>

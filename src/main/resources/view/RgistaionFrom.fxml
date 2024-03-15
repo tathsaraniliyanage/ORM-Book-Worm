@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="387.0" prefWidth="567.0" style="-fx-background-color: #C6D4DD;" stylesheets="@../assest/css/css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.RegistrationFormController">
+   <children>
+      <ImageView fitHeight="386.0" fitWidth="706.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@../assest/img/58389.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="247.0" layoutY="1.0" prefHeight="386.0" prefWidth="319.0">
+         <children>
+            <JFXTextField fx:id="txtUsername" focusColor="#405aa800" layoutX="69.0" layoutY="219.0" prefHeight="26.0" prefWidth="219.0" promptText="Username" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+            <JFXPasswordField fx:id="txtPassword" focusColor="#405aa800" layoutX="69.0" layoutY="268.0" prefHeight="26.0" prefWidth="219.0" promptText="Password" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+            <JFXButton layoutX="69.0" layoutY="319.0" onAction="#signUpOnAction" prefHeight="38.0" prefWidth="219.0" styleClass="nav-btn" text="LOGGIN">
+               <graphic>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="80.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="120.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="SIGN UP">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@../assest/img/icons8-arrow-24.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </GridPane>
+               </graphic>
+            </JFXButton>
+            <JFXTextField fx:id="txtMail" focusColor="#405aa800" layoutX="69.0" layoutY="176.0" prefHeight="26.0" prefWidth="219.0" promptText="e mail" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+            <JFXTextField fx:id="txtContact" focusColor="#405aa800" layoutX="69.0" layoutY="129.0" prefHeight="26.0" prefWidth="219.0" promptText="contact" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+            <JFXTextField fx:id="txtAddress" focusColor="#405aa800" layoutX="69.0" layoutY="77.0" prefHeight="26.0" prefWidth="219.0" promptText="Address" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+            <Text fill="WHITE" layoutX="68.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: 800;" text="SIGN UP">
+               <effect>
+                  <DropShadow color="#a6d4ff00" />
+               </effect>
+            </Text>
+         </children>
+      </Pane>
+      <Text fill="WHITE" layoutX="37.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 70; -fx-font-weight: 800;" text="BOOK" />
+      <Text fill="WHITE" layoutX="37.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 60; -fx-font-weight: 800;" text="WORM" />
+      <Line endX="21.0" layoutX="139.0" layoutY="344.0" startX="-100.0" stroke="WHITE" strokeWidth="5.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="314.0" prefWidth="600.0" stylesheets="@../assest/css/css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.BookAddFromController">
+   <children>
+      <JFXTextField fx:id="txtName" focusColor="#405aa800" layoutX="38.0" layoutY="63.0" prefHeight="52.0" prefWidth="519.0" promptText="Name" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+      <JFXButton layoutX="38.0" layoutY="245.0" onAction="#doneOnAction" prefHeight="38.0" prefWidth="519.0" styleClass="nav-btn" text=" ">
+         <graphic>
+            <GridPane prefHeight="30.0" prefWidth="496.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="68.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="132.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="DONE">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../assest/img/icons8-arrow-24.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <Text fx:id="txtBranchName" fill="#717179" layoutX="334.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18; -fx-font-weight: 400;" text=" " wrappingWidth="219.50390625" />
+      <JFXTextField fx:id="txtAuthor" focusColor="#405aa800" layoutX="41.0" layoutY="136.0" prefHeight="38.0" prefWidth="243.0" promptText="Author" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+      <JFXTextField fx:id="txtGarner" focusColor="#405aa800" layoutX="314.0" layoutY="134.0" prefHeight="38.0" prefWidth="243.0" promptText="Genare" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+      <JFXComboBox fx:id="cmbBranch" layoutX="41.0" layoutY="192.0" onAction="#cmbBranchOnAction" prefHeight="24.0" prefWidth="243.0" promptText="Branch" styleClass="text-field-normal" />
+      <Text fill="#404040" layoutX="42.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="ADD BOOK" />
+   </children>
+</AnchorPane>

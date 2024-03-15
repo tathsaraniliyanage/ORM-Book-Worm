@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="485.0" prefWidth="600.0" stylesheets="@../assest/css/css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.BorrowingFromController">
+   <children>
+      <JFXTextField fx:id="txtDescription" focusColor="#405aa800" layoutX="38.0" layoutY="34.0" prefHeight="69.0" prefWidth="519.0" promptText="Discription" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
+      <JFXButton layoutX="38.0" layoutY="425.0" onAction="#doneOnAction" prefHeight="38.0" prefWidth="519.0" styleClass="nav-btn" text="LOGGIN">
+         <graphic>
+            <GridPane prefHeight="30.0" prefWidth="432.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="68.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="132.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text fill="#404040" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="DONE">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../assest/img/icons8-arrow-24.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+         </graphic>
+      </JFXButton>
+      <Text fx:id="txtId" fill="#737196" layoutX="38.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20; -fx-font-weight: 800;" text="1" wrappingWidth="144.50390625" />
+      <Text fx:id="txtName" fill="#737196" layoutX="38.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23; -fx-font-weight: 800;" text="Sasindu Malshan" wrappingWidth="242.51806640625" />
+      <Text fx:id="txtDate" fill="#737196" layoutX="408.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20; -fx-font-weight: 800;" text="2024.03.24" textAlignment="RIGHT" wrappingWidth="144.50390625" />
+      <Text fill="#737196" layoutX="384.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20; -fx-font-weight: 800;" text="Dorrowing Date" textAlignment="RIGHT" wrappingWidth="170.50390625" />
+      <Pane layoutX="30.0" layoutY="179.0" prefHeight="233.0" prefWidth="531.0" style="-fx-background-radius: 10;" styleClass="bg-white">
+         <children>
+            <Text fill="#404040" layoutX="15.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-weight: bold;" text="List Of Books" />
+         </children>
+      </Pane>
+      <TableView fx:id="tblBook" layoutX="57.0" layoutY="209.0" prefHeight="193.0" prefWidth="481.0" stylesheets="@../assest/css/tbl.css">
+         <columns>
+            <TableColumn fx:id="colName" minWidth="0.0" prefWidth="361.0" text="    Name" />
+            <TableColumn fx:id="colAction" minWidth="0.0" prefWidth="115.0" text=" " />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
