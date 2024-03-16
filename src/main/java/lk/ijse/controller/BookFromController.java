@@ -1,5 +1,6 @@
 package lk.ijse.controller;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,6 +35,7 @@ public class BookFromController implements Initializable {
     public TableColumn colBranch;
     public TableColumn colUpdate;
     public TableColumn colDelete;
+    public JFXTextField txtSearchText;
     ObservableList list = FXCollections.observableArrayList();
 
     private static BookFromController controller;
@@ -59,7 +61,18 @@ public class BookFromController implements Initializable {
     }
 
     public void onKeyReleased(KeyEvent keyEvent) {
+        tblBook.getItems().clear();
+        List<BookProjection> bookProjectionList = bookService.searchBooks(txtSearchText.getText());
+        List<AdminBookTm> map=null;
+        if (bookProjectionList!=null)
+            map = modelMapper.map(
+                    bookProjectionList,
+                    new TypeToken<
+                            List<AdminBookTm>
+                            >()
+                    {}.getType());
 
+        tblBook.getItems().addAll(map);
     }
 
     @Override

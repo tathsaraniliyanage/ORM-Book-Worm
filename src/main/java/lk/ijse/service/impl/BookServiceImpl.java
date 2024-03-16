@@ -80,6 +80,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<BookProjection> searchBooks(String text) {
+        try {
+            repository.setSession(session);
+            return repository.searchBooks(text);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public boolean delete(Long id) {
         try {
             repository.setSession(session);

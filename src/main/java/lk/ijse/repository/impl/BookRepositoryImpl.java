@@ -87,4 +87,13 @@ public class BookRepositoryImpl implements BookRepository {
     public List<BookProjection> getBooks() {
         return session.createQuery("SELECT new lk.ijse.projection.BookProjection( b.id, b.name, b.author, b.genre, b.register_date, b.status, b2.branch) FROM Book b INNER JOIN Branch b2 ON b.branch.id = b2.id").list();
     }
+
+    @Override
+    public List<BookProjection> searchBooks(String text) {
+        return session.createQuery("SELECT new lk.ijse.projection.BookProjection( b.id, b.name, b.author, b.genre, b.register_date, b.status, b2.branch) FROM Book b INNER JOIN Branch b2 ON b.branch.id = b2.id WHERE b.genre LIKE :genre OR b.name LIKE :name OR b.author LIKE :author OR b2.branch LIKE :branch")
+                .setParameter("genre",text+"%")
+                .setParameter("name",text+"%")
+                .setParameter("author",text+"%")
+                .setParameter("branch",text+"%").list();
+    }
 }

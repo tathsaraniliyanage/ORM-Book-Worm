@@ -15,4 +15,6 @@ public interface BookRepository extends CrudRepository<Book>, Custom<Book> {
     int unavailableBookCount();
 
     List<BookProjection> getBooks();
+
+    List<BookProjection> searchBooks(String text);
 }
