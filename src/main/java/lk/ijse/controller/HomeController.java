@@ -9,6 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import lk.ijse.projection.NotReturnUsers;
+import lk.ijse.service.BookService;
 import lk.ijse.service.BorrowingService;
 import lk.ijse.service.ServiceFactory;
 import lk.ijse.tm.NotReturnTm;
@@ -49,6 +50,10 @@ public class HomeController implements Initializable {
             (BorrowingService) ServiceFactory
                     .getBoFactory()
                     .getService(ServiceFactory.ServiceTypes.BORROWING);
+    private final BookService bookService=
+            (BookService) ServiceFactory
+                    .getBoFactory()
+                    .getService(ServiceFactory.ServiceTypes.BOOK);
 
     public void onKeyReleased(KeyEvent keyEvent) {
 
@@ -65,6 +70,12 @@ public class HomeController implements Initializable {
         tblReceived.setItems(observableList);
 
         loadAll();
+        setCount();
+    }
+
+    private void setCount() {
+        txtAvailableBooks.setText(bookService.availableBookCount()+"+");
+        txtUnavailableBooks.setText(bookService.unavailableBookCount()+"+");
     }
 
     public void loadAll() {

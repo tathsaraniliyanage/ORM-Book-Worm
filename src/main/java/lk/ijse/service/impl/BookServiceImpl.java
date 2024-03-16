@@ -69,7 +69,14 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookDTO> search(String text) {
-        return null;
+        try {
+            repository.setSession(session);
+            return modelMapper.map( repository.search(text),new TypeToken<List<BookDTO>>() {
+            }.getType());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
@@ -88,7 +95,6 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public int count() {
-        System.out.println(repository);
         try {
             repository.setSession(session);
             int count = repository.count();
@@ -123,6 +129,30 @@ public class BookServiceImpl implements BookService {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @Override
+    public int availableBookCount() {
+        try {
+            repository.setSession(session);
+            int count = repository.availableBookCount();
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Integer.MIN_VALUE;
+        }
+    }
+
+    @Override
+    public int unavailableBookCount() {
+        try {
+            repository.setSession(session);
+            int count = repository.unavailableBookCount();
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Integer.MIN_VALUE;
         }
     }
 }

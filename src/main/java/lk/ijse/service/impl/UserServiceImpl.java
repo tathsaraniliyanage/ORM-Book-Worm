@@ -1,10 +1,8 @@
 package lk.ijse.service.impl;
 
 import lk.ijse.cofig.FactoryConfiguration;
-import lk.ijse.dto.BookDTO;
 import lk.ijse.dto.UserDTO;
 import lk.ijse.entity.User;
-import lk.ijse.entity.enumuretion.TypeUser;
 import lk.ijse.repository.RepoFactory;
 import lk.ijse.repository.UserRepository;
 import lk.ijse.service.UserService;
@@ -13,7 +11,6 @@ import org.hibernate.Transaction;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;
-
 
 
 public class UserServiceImpl implements UserService {
@@ -88,10 +85,13 @@ public class UserServiceImpl implements UserService {
     public UserDTO auth(String password, String username) {
         try {
             userRepository.setSession(session);
-            return modelMapper.map(userRepository.auth(password,username),UserDTO.class);
+            User auth = userRepository.auth(password, username);
+            if (auth != null)
+                return modelMapper.map(auth, UserDTO.class);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
+        return null;
     }
 }

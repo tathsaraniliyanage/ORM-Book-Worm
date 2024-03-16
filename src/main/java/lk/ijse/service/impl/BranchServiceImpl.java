@@ -54,7 +54,17 @@ public class BranchServiceImpl implements BranchService {
 
     @Override
     public boolean delete(Long id) {
-        return false;
+        Transaction transaction = session.beginTransaction();
+        try {
+            branchRepository.setSession(session);
+            branchRepository.delete(id);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override

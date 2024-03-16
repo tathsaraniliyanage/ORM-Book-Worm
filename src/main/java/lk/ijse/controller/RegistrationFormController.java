@@ -38,6 +38,9 @@ public class RegistrationFormController {
         if (isSave){
             new Alert(Alert.AlertType.CONFIRMATION,"ok ").show();
             NavigationUtility.switchNavigation("DashBord.fxml",actionEvent);
+            DashboardFormController.getController().txtID.setText(String.valueOf(userDTO.getId()));
+            DashboardFormController.getController().txtEmail.setText(userDTO.getEmail());
+            DashboardFormController.getController().txtUsername.setText(userDTO.getUserName());
         }else {
             new Alert(Alert.AlertType.WARNING,"error ").show();
         }

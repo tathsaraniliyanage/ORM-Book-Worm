@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import lk.ijse.controller.BookFromController;
 import lk.ijse.controller.BookUpdateFromController;
+import lk.ijse.controller.BranchFromController;
 import lk.ijse.controller.BranchUpdateFromController;
 import lk.ijse.service.BookService;
 import lk.ijse.service.BranchService;
@@ -82,7 +83,7 @@ public class BranchTm {
 
                 boolean delete = branchService.delete(this.id);
                 if (delete) {
-                    BookFromController.getController().loadAllBooks();
+                    BranchFromController.getController().loadAll();
                     new Alert(Alert.AlertType.CONFIRMATION, "Branch delete Successful ").show();
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Something else try agens ").show();

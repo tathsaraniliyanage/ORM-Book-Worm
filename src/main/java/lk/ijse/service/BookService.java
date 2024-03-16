@@ -13,4 +13,8 @@ public interface BookService extends CrudService<BookDTO> {
     BookDTO getBook(Long id);
 
     List<BookProjection> getBooks();
+
+    int availableBookCount();
+
+    int unavailableBookCount();
 }

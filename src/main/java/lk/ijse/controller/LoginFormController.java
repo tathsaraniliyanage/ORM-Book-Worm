@@ -48,6 +48,7 @@ public class LoginFormController {
             new Alert(Alert.AlertType.WARNING, "Check Your Username And Password").show();
             txtUsername.clear();
             txtPassword.clear();
+            txtPasswordText.clear();
         }
     }
 

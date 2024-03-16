@@ -49,8 +49,13 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public List<Book> search(String text) {
-        String sql = "SELECT * FROM book WHERE id LIKE :txt OR name LIKE :txt OR author LIKE :txt";
-        return session.createNativeQuery(sql).setParameter("txt",text+"%").getResultList();
+       /* String sql = "SELECT * FROM book WHERE id LIKE :txt OR name LIKE :txt OR author LIKE :txt";
+        return session.createNativeQuery(sql).setParameter("txt",text+"%").getResultList();*/
+
+      return   session.createQuery("SELECT b FROM Book b WHERE b.genre LIKE :genre OR b.name LIKE :name OR b.author LIKE :author")
+                .setParameter("genre",text+"%")
+                .setParameter("name",text+"%")
+                .setParameter("author",text+"%").list();
     }
 
     @Override
@@ -63,6 +68,20 @@ public class BookRepositoryImpl implements BookRepository {
     @Override
     public int count() {
         String hql = "SELECT COUNT(id) FROM Book";
+        Long count = session.createQuery(hql, Long.class).getSingleResult();
+        return Math.toIntExact(count);
+    }
+
+    @Override
+    public int availableBookCount() {
+        String hql = "SELECT COUNT(id) FROM Book WHERE status = lk.ijse.entity.enumuretion.Status.AVAILABLE";
+        Long count = session.createQuery(hql, Long.class).getSingleResult();
+        return Math.toIntExact(count);
+    }
+
+    @Override
+    public int unavailableBookCount() {
+        String hql = "SELECT COUNT(id) FROM Book WHERE status = lk.ijse.entity.enumuretion.Status.UNAVAILABLE";
         Long count = session.createQuery(hql, Long.class).getSingleResult();
         return Math.toIntExact(count);
     }

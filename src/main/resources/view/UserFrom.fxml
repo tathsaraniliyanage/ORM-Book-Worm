@@ -11,11 +11,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="325.0" prefWidth="778.0" stylesheets="@../assest/css/css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.UserController">
    <children>
       <JFXTextField fx:id="txtContact" focusColor="#405aa800" layoutX="417.0" layoutY="76.0" prefHeight="38.0" prefWidth="313.0" promptText="Contact Number" styleClass="text-field-normal" unFocusColor="#4d4d4d00" />
-      <JFXButton layoutX="48.0" layoutY="262.0" onAction="#doneOnAction" prefHeight="38.0" prefWidth="695.0" styleClass="nav-btn" text="LOGGIN">
+      <JFXButton layoutX="48.0" layoutY="262.0" onAction="#doneOnAction" prefHeight="38.0" prefWidth="695.0" styleClass="nav-btn">
          <graphic>
             <GridPane prefHeight="30.0" prefWidth="432.0">
                <columnConstraints>

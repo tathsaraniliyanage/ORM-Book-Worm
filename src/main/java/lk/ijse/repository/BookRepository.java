@@ -10,5 +10,9 @@ import java.util.List;
 public interface BookRepository extends CrudRepository<Book>, Custom<Book> {
     int count();
 
+    int availableBookCount();
+
+    int unavailableBookCount();
+
     List<BookProjection> getBooks();
 }
