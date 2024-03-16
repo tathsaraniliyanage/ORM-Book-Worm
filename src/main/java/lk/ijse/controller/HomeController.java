@@ -21,39 +21,35 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-
 public class HomeController implements Initializable {
+    private static HomeController controller;
+    private final BorrowingService borrowingService =
+            (BorrowingService) ServiceFactory
+                    .getBoFactory()
+                    .getService(ServiceFactory.ServiceTypes.BORROWING);
+    private final BookService bookService =
+            (BookService) ServiceFactory
+                    .getBoFactory()
+                    .getService(ServiceFactory.ServiceTypes.BOOK);
+    private final ModelMapper modelMapper = new ModelMapper();
+    private final ObservableList<NotReturnTm> observableList = FXCollections.observableArrayList();
     public TableView tblReceived;
     public TableColumn colName;
     public TableColumn colBook;
     public TableColumn colBorrowing;
     public TableColumn colDueDate;
     public TableColumn colContact;
+    public TableColumn colAction;
     public Text txtAvailableBooks;
     public Text txtUnavailableBooks;
-    public TableColumn colAction;
-
-    private static HomeController controller;
 
     public HomeController() {
-        controller=this;
+        controller = this;
     }
 
     public static HomeController getController() {
         return controller;
     }
-
-    ObservableList<NotReturnTm> observableList= FXCollections.observableArrayList();
-    ModelMapper modelMapper=new ModelMapper();
-
-    BorrowingService borrowingService=
-            (BorrowingService) ServiceFactory
-                    .getBoFactory()
-                    .getService(ServiceFactory.ServiceTypes.BORROWING);
-    private final BookService bookService=
-            (BookService) ServiceFactory
-                    .getBoFactory()
-                    .getService(ServiceFactory.ServiceTypes.BOOK);
 
     public void onKeyReleased(KeyEvent keyEvent) {
 
@@ -68,19 +64,19 @@ public class HomeController implements Initializable {
         colContact.setCellValueFactory(new PropertyValueFactory<>("Tel"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("updateStatus"));
         tblReceived.setItems(observableList);
-
         loadAll();
         setCount();
     }
 
     private void setCount() {
-        txtAvailableBooks.setText(bookService.availableBookCount()+"+");
-        txtUnavailableBooks.setText(bookService.unavailableBookCount()+"+");
+        txtAvailableBooks.setText(bookService.availableBookCount() + "+");
+        txtUnavailableBooks.setText(bookService.unavailableBookCount() + "+");
     }
 
     public void loadAll() {
         List<NotReturnUsers> notReturnUsers = borrowingService.getNotReturnUsers();
-        List<NotReturnTm>returnTms=modelMapper.map(notReturnUsers,new TypeToken<List<NotReturnTm>>() {}.getType());
+        List<NotReturnTm> returnTms = modelMapper.map(notReturnUsers, new TypeToken<List<NotReturnTm>>() {
+        }.getType());
         tblReceived.getItems().setAll(returnTms);
     }
 }

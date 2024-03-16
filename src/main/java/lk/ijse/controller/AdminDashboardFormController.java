@@ -18,7 +18,6 @@ public class AdminDashboardFormController implements Initializable {
 
     private  static AdminDashboardFormController controller;
     public AnchorPane rootPane;
-
     public Text txtID;
     public Text txtUsername;
     public Text txtEmail;

@@ -14,7 +14,6 @@ import lk.ijse.dto.BookDTO;
 import lk.ijse.dto.BorrowingDTO;
 import lk.ijse.dto.BorrowingDetailDTO;
 import lk.ijse.dto.UserDTO;
-import lk.ijse.entity.User;
 import lk.ijse.entity.enumuretion.BorrowingStatus;
 import lk.ijse.entity.enumuretion.Status;
 import lk.ijse.service.BookService;
@@ -31,8 +30,20 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-
 public class BorrowingFromController implements Initializable {
+    private final UserService userService =
+            (UserService) ServiceFactory
+                    .getBoFactory()
+                    .getService(ServiceFactory.ServiceTypes.USER);
+    private final BorrowingService borrowingService =
+            (BorrowingService) ServiceFactory
+                    .getBoFactory()
+                    .getService(ServiceFactory.ServiceTypes.BORROWING);
+    private final BookService bookService =
+            (BookService) ServiceFactory
+                    .getBoFactory()
+                    .getService(ServiceFactory.ServiceTypes.BOOK);
+    private final ObservableList observableList = FXCollections.observableArrayList();
     public JFXTextField txtDescription;
     public Text txtId;
     public Text txtName;
@@ -41,24 +52,19 @@ public class BorrowingFromController implements Initializable {
     public TableColumn colName;
     public TableColumn colAction;
 
-    UserService userService= (UserService) ServiceFactory.getBoFactory().getService(ServiceFactory.ServiceTypes.USER);
-    BorrowingService borrowingService= (BorrowingService) ServiceFactory.getBoFactory().getService(ServiceFactory.ServiceTypes.BORROWING);
-    BookService bookService= (BookService) ServiceFactory.getBoFactory().getService(ServiceFactory.ServiceTypes.BOOK);
-    ObservableList observableList= FXCollections.observableArrayList();
-
     public void doneOnAction(ActionEvent actionEvent) {
+
         BorrowingDTO borrowingDTO = new BorrowingDTO();
         borrowingDTO.setBorrowing_date(LocalDate.parse(txtDate.getText()));
         borrowingDTO.setReceived_date(LocalDate.now());
         borrowingDTO.setDescription(txtDescription.getText());
 
-
         UserDTO userDTO = userService.getUser(Long.valueOf(txtId.getText()));
         userDTO.setId(1L);
         borrowingDTO.setUserDTO(userDTO);
 
-        List<BorrowingDetailDTO>borrowingDetailDTOS=new ArrayList<>();
-        for (BookDTO bookDTO:DashboardFormController.list){
+        List<BorrowingDetailDTO> borrowingDetailDTOS = new ArrayList<>();
+        for (BookDTO bookDTO : DashboardFormController.list) {
             BorrowingDetailDTO borrowingDetailDTO = new BorrowingDetailDTO();
             borrowingDetailDTO.setBookDTO(bookDTO);
             borrowingDetailDTO.setBorrowingDTO(borrowingDTO);
@@ -67,19 +73,19 @@ public class BorrowingFromController implements Initializable {
         }
         borrowingDTO.setBorrowingDetailDTOS(borrowingDetailDTOS);
 
-        List<BookDTO>pendingToUpdateBookDTOs=new ArrayList<>();
-        for (BookDTO bookDTO:DashboardFormController.list){
+        List<BookDTO> pendingToUpdateBookDTOs = new ArrayList<>();
+        for (BookDTO bookDTO : DashboardFormController.list) {
             BookDTO book = bookService.getBook(bookDTO.getId());
             bookDTO.setStatus(Status.UNAVAILABLE);
             bookDTO.setBranchDTO(book.getBranchDTO());
             pendingToUpdateBookDTOs.add(bookDTO);
         }
         boolean booking = borrowingService.booking(borrowingDTO, pendingToUpdateBookDTOs);
-        if (booking){
+        if (booking) {
             NavigationUtility.close(actionEvent);
-            new Alert(Alert.AlertType.CONFIRMATION,"Borrowing Successful ").show();
-        }else {
-            new Alert(Alert.AlertType.WARNING,"Something else try agens ").show();
+            new Alert(Alert.AlertType.CONFIRMATION, "Borrowing Successful ").show();
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Something else try agens ").show();
         }
     }
 
@@ -93,10 +99,9 @@ public class BorrowingFromController implements Initializable {
         colAction.setCellValueFactory(new PropertyValueFactory<>("colAction"));
         tblBook.setItems(observableList);
 
-        List<BorrowingListTm>list=new ArrayList<>();
-
-        for (BookDTO bookDTO:DashboardFormController.list){
-            list.add(new BorrowingListTm(bookDTO.getName(),null));
+        List<BorrowingListTm> list = new ArrayList<>();
+        for (BookDTO bookDTO : DashboardFormController.list) {
+            list.add(new BorrowingListTm(bookDTO.getName(), null));
         }
         tblBook.getItems().setAll(list);
     }

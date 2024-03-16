@@ -27,7 +27,12 @@ import java.util.ResourceBundle;
  */
 
 public class BranchFromController implements Initializable {
-    private final BranchService branchService = (BranchService) ServiceFactory.getBoFactory().getService(ServiceFactory.ServiceTypes.BRANCH);
+    private static BranchFromController controller;
+    private final BranchService branchService =
+            (BranchService) ServiceFactory
+                    .getBoFactory()
+                    .getService(ServiceFactory.ServiceTypes.BRANCH);
+    private final ObservableList<BranchTm> observableList = FXCollections.observableArrayList();
     public TableView tblBook;
     public TableColumn col;
     public TableColumn colBranch;
@@ -36,20 +41,15 @@ public class BranchFromController implements Initializable {
     public TableColumn colLocation;
     public TableColumn colUpdate;
     public TableColumn colDelete;
-
-    ObservableList<BranchTm> observableList= FXCollections.observableArrayList();
-
-    private static BranchFromController controller;
+    private final ModelMapper modelMapper = new ModelMapper();
 
     public BranchFromController() {
-        controller=this;
+        controller = this;
     }
 
     public static BranchFromController getController() {
         return controller;
     }
-
-    private ModelMapper modelMapper=new ModelMapper();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

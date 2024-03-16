@@ -21,7 +21,10 @@ import java.util.ResourceBundle;
 
 public class BranchUpdateFromController implements Initializable {
     public static Long id;
-    private final BranchService branchService = (BranchService) ServiceFactory.getBoFactory().getService(ServiceFactory.ServiceTypes.BRANCH);
+    private final BranchService branchService =
+            (BranchService) ServiceFactory
+                    .getBoFactory()
+                    .getService(ServiceFactory.ServiceTypes.BRANCH);
     public JFXTextField txtBranch;
     public JFXTextField txtContact;
     public JFXTextField txtLocation;

@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.dto.UserDTO;
-import lk.ijse.entity.enumuretion.TypeUser;
 import lk.ijse.service.ServiceFactory;
 import lk.ijse.service.UserService;
 import lk.ijse.util.NavigationUtility;
@@ -25,7 +24,7 @@ public class LoginFormController {
 
     public void loginOnAction(ActionEvent actionEvent) {
         UserDTO auth = userService.auth(txtPassword.getText(), txtUsername.getText());
-        if (auth!=null) {
+        if (auth != null) {
             switch (auth.getUser()) {
                 case ADMIN: {
                     NavigationUtility.switchNavigation("AdminDashBord.fxml", actionEvent);
@@ -44,14 +43,13 @@ public class LoginFormController {
                 default:
                     new Alert(Alert.AlertType.WARNING, "Check Your Username And Password").show();
             }
-        }else {
+        } else {
             new Alert(Alert.AlertType.WARNING, "Check Your Username And Password").show();
             txtUsername.clear();
             txtPassword.clear();
             txtPasswordText.clear();
         }
     }
-
 
 
     public void mouseEntered(MouseEvent mouseEvent) {
@@ -68,7 +66,7 @@ public class LoginFormController {
 
     public void regOnClick(MouseEvent mouseEvent) {
         try {
-            NavigationUtility.switchNavigation("RgistaionFrom.fxml",mouseEvent);
+            NavigationUtility.switchNavigation("RgistaionFrom.fxml", mouseEvent);
         } catch (IOException e) {
             e.printStackTrace();
         }

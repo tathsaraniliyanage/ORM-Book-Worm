@@ -15,19 +15,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-
 public class UserController implements Initializable {
+    public static String id;
+    private static TypeUser userType;
+    private final UserService userService =
+            (UserService) ServiceFactory
+                    .getBoFactory()
+                    .getService(ServiceFactory.ServiceTypes.USER);
     public JFXTextField txtContact;
     public Text txtId;
     public JFXTextField txtAddress;
     public JFXTextField txtMail;
     public JFXTextField txtPassword;
     public JFXTextField txtUsername;
-
-    private static TypeUser userType;
-    public static String id;
-
-    UserService userService = (UserService) ServiceFactory.getBoFactory().getService(ServiceFactory.ServiceTypes.USER);
 
     public void doneOnAction(ActionEvent actionEvent) {
 
@@ -42,11 +42,11 @@ public class UserController implements Initializable {
         );
 
         boolean isUpdate = userService.update(userDTO);
-        if (isUpdate){
-            new Alert(Alert.AlertType.CONFIRMATION,"Update Success").show();
+        if (isUpdate) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Update Success").show();
             NavigationUtility.close(actionEvent);
-        }else {
-            new Alert(Alert.AlertType.WARNING,"Something Wrong").show();
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Something Wrong").show();
         }
 
 
@@ -61,7 +61,7 @@ public class UserController implements Initializable {
         txtMail.setText(user.getEmail());
         txtPassword.setText(user.getPassword());
         txtUsername.setText(user.getUserName());
-        userType= user.getUser();
+        userType = user.getUser();
 
     }
 }

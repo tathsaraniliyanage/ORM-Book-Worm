@@ -21,20 +21,22 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-
-
 public class BookUpdateFromController implements Initializable {
+
     public static Long bookId;
+
     private final BranchService branchService =
             (BranchService) ServiceFactory
                     .getBoFactory()
                     .getService(ServiceFactory.ServiceTypes.BRANCH);
+
     private final BookService bookService =
             (BookService) ServiceFactory
                     .getBoFactory()
                     .getService(ServiceFactory.ServiceTypes.BOOK);
-    public JFXTextField txtName;
+
     public Text txtBranchName;
+    public JFXTextField txtName;
     public JFXTextField txtGarner;
     public JFXTextField txtAuthor;
     public JFXComboBox cmbBranch;
@@ -76,7 +78,7 @@ public class BookUpdateFromController implements Initializable {
         }
         cmbBranch.getItems().addAll(ids);
 
-        String[] status={String.valueOf(Status.AVAILABLE),String.valueOf(Status.UNAVAILABLE)};
+        String[] status = {String.valueOf(Status.AVAILABLE), String.valueOf(Status.UNAVAILABLE)};
         cmbStatus.getItems().addAll(status);
 
         BookDTO book = bookService.getBook(bookId);

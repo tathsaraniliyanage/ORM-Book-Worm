@@ -11,18 +11,16 @@ import lk.ijse.service.UserService;
 import lk.ijse.util.NavigationUtility;
 
 
-
 public class RegistrationFormController {
+    private final UserService userService =
+            (UserService) ServiceFactory
+                    .getBoFactory()
+                    .getService(ServiceFactory.ServiceTypes.USER);
     public JFXTextField txtUsername;
     public JFXPasswordField txtPassword;
     public JFXTextField txtMail;
     public JFXTextField txtContact;
     public JFXTextField txtAddress;
-
-    private final UserService userService=
-            (UserService) ServiceFactory
-                    .getBoFactory()
-                    .getService(ServiceFactory.ServiceTypes.USER);
 
     public void signUpOnAction(ActionEvent actionEvent) {
         UserDTO userDTO = new UserDTO(
@@ -35,14 +33,14 @@ public class RegistrationFormController {
                 TypeUser.USER
         );
         boolean isSave = userService.save(userDTO);
-        if (isSave){
-            new Alert(Alert.AlertType.CONFIRMATION,"ok ").show();
-            NavigationUtility.switchNavigation("DashBord.fxml",actionEvent);
+        if (isSave) {
+            new Alert(Alert.AlertType.CONFIRMATION, "ok ").show();
+            NavigationUtility.switchNavigation("DashBord.fxml", actionEvent);
             DashboardFormController.getController().txtID.setText(String.valueOf(userDTO.getId()));
             DashboardFormController.getController().txtEmail.setText(userDTO.getEmail());
             DashboardFormController.getController().txtUsername.setText(userDTO.getUserName());
-        }else {
-            new Alert(Alert.AlertType.WARNING,"error ").show();
+        } else {
+            new Alert(Alert.AlertType.WARNING, "error ").show();
         }
 
     }

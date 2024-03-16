@@ -33,6 +33,8 @@ public class DashboardFormController implements Initializable {
             (BookService) ServiceFactory
                     .getBoFactory()
                     .getService(ServiceFactory.ServiceTypes.BOOK);
+    private final ObservableList observableList = FXCollections.observableArrayList();
+    private final ModelMapper modelMapper = new ModelMapper();
     public TableView tblBook;
     public TableColumn colId;
     public TableColumn colName;
@@ -45,8 +47,6 @@ public class DashboardFormController implements Initializable {
     public Text txtUsername;
     public Text txtEmail;
     public JFXTextField txtTextSearch;
-    ObservableList observableList = FXCollections.observableArrayList();
-    ModelMapper modelMapper = new ModelMapper();
 
     public DashboardFormController() {
         controller = this;

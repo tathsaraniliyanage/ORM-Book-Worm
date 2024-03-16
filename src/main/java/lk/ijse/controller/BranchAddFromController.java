@@ -17,11 +17,13 @@ import java.time.LocalDate;
  */
 
 public class BranchAddFromController {
+    private final BranchService branchService =
+            (BranchService) ServiceFactory
+                    .getBoFactory()
+                    .getService(ServiceFactory.ServiceTypes.BRANCH);
     public JFXTextField txtBranch;
     public JFXTextField txtContact;
     public JFXTextField txtLocation;
-
-    private final BranchService branchService= (BranchService) ServiceFactory.getBoFactory().getService(ServiceFactory.ServiceTypes.BRANCH);
 
     public void doneOnAction(ActionEvent actionEvent) {
         BranchDTO branchDTO = new BranchDTO();
@@ -32,7 +34,7 @@ public class BranchAddFromController {
         branchDTO.setLocation(txtLocation.getText());
 
         boolean save = branchService.save(branchDTO);
-        if (save){
+        if (save) {
             BranchFromController.getController().loadAll();
             NavigationUtility.close(actionEvent);
             new Alert(Alert.AlertType.CONFIRMATION, "Branch Save Successful ").show();
