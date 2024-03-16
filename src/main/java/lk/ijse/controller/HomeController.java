@@ -1,5 +1,6 @@
 package lk.ijse.controller;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -42,6 +43,7 @@ public class HomeController implements Initializable {
     public TableColumn colAction;
     public Text txtAvailableBooks;
     public Text txtUnavailableBooks;
+    public JFXTextField txtSearchText;
 
     public HomeController() {
         controller = this;
@@ -52,7 +54,12 @@ public class HomeController implements Initializable {
     }
 
     public void onKeyReleased(KeyEvent keyEvent) {
-
+        tblReceived.getItems().clear();
+        List<NotReturnUsers> notReturnUsers = borrowingService.getNotReturnUsersSearch(txtSearchText.getText());
+        List<NotReturnTm> returnTms = modelMapper.map(notReturnUsers, new TypeToken<List<NotReturnTm>>() {
+        }.getType());
+        tblReceived.getItems().setAll(returnTms);
+        tblReceived.refresh();
     }
 
     @Override
@@ -74,9 +81,11 @@ public class HomeController implements Initializable {
     }
 
     public void loadAll() {
+        tblReceived.getItems().clear();
         List<NotReturnUsers> notReturnUsers = borrowingService.getNotReturnUsers();
         List<NotReturnTm> returnTms = modelMapper.map(notReturnUsers, new TypeToken<List<NotReturnTm>>() {
         }.getType());
         tblReceived.getItems().setAll(returnTms);
+        tblReceived.refresh();
     }
 }

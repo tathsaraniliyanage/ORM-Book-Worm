@@ -12,4 +12,5 @@ public interface BorrowingService extends CrudService<BorrowingDTO> {
     boolean booking(BorrowingDTO borrowingDTO, List<BookDTO> pendingToUpdateBookDTOs);
     public List<NotReturnUsers> getNotReturnUsers();
 
+    List<NotReturnUsers> getNotReturnUsersSearch(String searchText);
 }

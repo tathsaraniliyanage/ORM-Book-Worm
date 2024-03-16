@@ -101,4 +101,15 @@ public class BorrowingServiceImpl implements BorrowingService {
            return null;
        }
     }
+
+    @Override
+    public List<NotReturnUsers> getNotReturnUsersSearch(String searchText) {
+        try {
+            borrowingRepository.setSession(session);
+            return borrowingRepository.getNotReturnUsersSearch( searchText);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

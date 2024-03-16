@@ -42,7 +42,6 @@ public class BookRepositoryImpl implements BookRepository {
     public List<Book> findAll() {
         String sql = "SELECT * FROM book";
         List<Book> resultList = session.createQuery("SELECT b FROM Book b", Book.class).getResultList();
-//        List resultList = session.createNativeQuery(sql).getResultList();
         System.out.println(resultList);
         return resultList;
     }

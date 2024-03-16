@@ -58,4 +58,14 @@ public class BorrowingRepositoryImpl implements BorrowingRepository {
         Query query = session.createQuery("select new lk.ijse.projection.NotReturnUsers( b2.id ,b.id , u.username , b2.name , b.borrowing_date , b.received_date,u.Tel) FROM BorrowingDetail bd INNER JOIN Borrowing b ON bd.borrowing.id = b.id INNER JOIN User u ON b.user.id = u.id INNER JOIN Book b2 ON bd.book.id = b2.id WHERE bd.status='PENDING'");
         return query.list();
     }
+
+    @Override
+    public List<NotReturnUsers> getNotReturnUsersSearch(String searchText) {
+        Query query = session.createQuery("select new lk.ijse.projection.NotReturnUsers( b2.id ,b.id , u.username , b2.name , b.borrowing_date , b.received_date,u.Tel) FROM BorrowingDetail bd INNER JOIN Borrowing b ON bd.borrowing.id = b.id INNER JOIN User u ON b.user.id = u.id INNER JOIN Book b2 ON bd.book.id = b2.id WHERE bd.status='PENDING' AND u.username LIKE :username OR u.Tel LIKE :tel OR b2.name LIKE :name");
+        return query
+                .setParameter("username",searchText+"%")
+                .setParameter("tel",searchText+"%")
+                .setParameter("name",searchText+"%")
+                .list();
+    }
 }

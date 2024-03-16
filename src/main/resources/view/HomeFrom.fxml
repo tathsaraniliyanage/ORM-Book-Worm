@@ -30,7 +30,7 @@
       <Text fill="#737196" layoutX="25.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-weight: 800;" text="WORM" />
       <Pane layoutX="125.0" layoutY="31.0" prefHeight="42.0" prefWidth="338.0" styleClass="round-greed">
          <children>
-            <JFXTextField fx:id="txtText11" alignment="CENTER" focusColor="#ffffff00" layoutX="1.0" layoutY="1.0" onKeyReleased="#onKeyReleased" prefHeight="39.0" prefWidth="293.0" styleClass="text-field-search" unFocusColor="#4d4d4d00" />
+            <JFXTextField fx:id="txtSearchText" alignment="CENTER" focusColor="#ffffff00" layoutX="1.0" layoutY="1.0" onKeyReleased="#onKeyReleased" prefHeight="39.0" prefWidth="293.0" styleClass="text-field-search" unFocusColor="#4d4d4d00" />
             <ImageView fitHeight="30.0" fitWidth="26.0" layoutX="303.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../Prabo/Lavish_Styloo/src/main/resources/view/assest/icon/icons8-search-50%20(1).png" />
