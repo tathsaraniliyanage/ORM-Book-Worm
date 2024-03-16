@@ -49,9 +49,6 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public List<Book> search(String text) {
-       /* String sql = "SELECT * FROM book WHERE id LIKE :txt OR name LIKE :txt OR author LIKE :txt";
-        return session.createNativeQuery(sql).setParameter("txt",text+"%").getResultList();*/
-
       return   session.createQuery("SELECT b FROM Book b WHERE b.genre LIKE :genre OR b.name LIKE :name OR b.author LIKE :author")
                 .setParameter("genre",text+"%")
                 .setParameter("name",text+"%")

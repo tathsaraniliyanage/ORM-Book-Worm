@@ -1,5 +1,6 @@
 package lk.ijse.controller;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,6 +43,7 @@ public class BranchFromController implements Initializable {
     public TableColumn colUpdate;
     public TableColumn colDelete;
     private final ModelMapper modelMapper = new ModelMapper();
+    public JFXTextField txtSearchText;
 
     public BranchFromController() {
         controller = this;
@@ -81,6 +83,13 @@ public class BranchFromController implements Initializable {
     }
 
     public void onKeyReleased(KeyEvent keyEvent) {
-
+        tblBook.getItems().clear();
+        List<BranchDTO> branchDTOS = branchService.search(txtSearchText.getText());
+        if (!branchDTOS.isEmpty()) {
+            List<BranchTm> branchTms = modelMapper.map(branchDTOS, new TypeToken<List<BranchTm>>() {
+            }.getType());
+            tblBook.getItems().addAll(branchTms);
+        }
+        tblBook.refresh();
     }
 }

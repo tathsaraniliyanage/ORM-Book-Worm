@@ -82,7 +82,15 @@ public class BranchServiceImpl implements BranchService {
 
     @Override
     public List<BranchDTO> search(String text) {
-        return null;
+        try {
+            branchRepository.setSession(session);
+            return modelMapper.map(branchRepository.search(text), new TypeToken<List<BranchDTO>>() {
+            }.getType());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override

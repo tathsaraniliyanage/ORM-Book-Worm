@@ -30,7 +30,11 @@ public class BranchRepositoryImpl implements BranchRepository {
 
     @Override
     public List<Branch> search(String text) {
-        return null;
+        return session.createQuery("SELECT b FROM Branch b WHERE b.branch LIKE :branch OR b.contact LIKE :contact OR b.location LIKE :location ")
+                .setParameter("branch",text+"%")
+                .setParameter("contact",text+"%")
+                .setParameter("location",text+"%")
+                .list();
     }
 
     @Override
